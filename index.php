@@ -39,6 +39,11 @@
                 <i class="ph-fill ph-trash" style="color: red;"></i>
             </div>
         </div>
+        <?php
+            include("Conexao.php");
+            $connection = new Conexao();
+            $connection->conectaDB();
+        ?>
     </main>
 </body>
 </html>
