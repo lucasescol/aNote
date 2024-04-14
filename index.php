@@ -23,16 +23,11 @@
         <div class="addTask">
             <h2>Adicione Tasks</h2>
 
-            <form method="POST">
+            <form method="POST" action="process.php">
+                <input type="hidden" name="type" value="create">
                 <input type="text" name="task">
                 <input type="submit" value="Adicionar">
-                <?php
-                    //Create
-                    if (isset($_POST['task'])){
-                        $sql = $conn->prepare("INSERT into task VALUES (null, ?, 0)");
-                        $sql->execute(array($_POST['task']));
-                    }
-                ?>
+
             </form>
             
         </div>
@@ -52,11 +47,17 @@
                         <i class='ph ph-circle'></i>
                         <h3 class='title'><?= $task['title'] ?></h3>
                     </div>
-                    <a href="anote/delete" class="delete">
-                        <i class='ph-fill ph-trash'></i>
-                    </a>
+                    <form action="process.php" method="POST">
+                        <input type="hidden" name="type" value="delete">
+                        <input type="hidden" name="id" value="<?= $task['id'] ?>">
+                        <button type="submit">
+                            <i class='ph-fill ph-trash'></i>
+                        </button>
+                    </form>
+                    
                 </div>
             <?php endforeach; ?>
+
         </div>
     </main>
 </body>
