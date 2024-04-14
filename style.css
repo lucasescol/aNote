@@ -79,3 +79,8 @@ main .taskList .task .title {
     font-size: 18px;
     font-weight: 500;
 }
+
+main .taskList .task a {
+    text-decoration: none;
+    color: red;
+}
