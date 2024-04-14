@@ -8,7 +8,7 @@
 
     if ($data['type'] == "create") {
         //Create
-        $sql = $conn->prepare("INSERT into task VALUES (null, ?, 0)");
+        $sql = $conn->prepare("INSERT into task VALUES (null, ?, 1)");
         $sql->execute(array($data["task"]));
 
     } else if ($data['type'] == "delete") {
