@@ -15,10 +15,26 @@
     <main>
         <div class="addTask">
             <h2>Adicione Tasks</h2>
-            <form action="#">
-                <input type="text">
-                <input type="button" value="Adicionar">
+
+            <form method="POST">
+                <input type="text" name="task">
+                <input type="submit" value="Adicionar">
+
+                <?php
+                    include("Connection.php");
+
+                    $connection = new Connection();
+                    $conn = $connection->connectDB();
+                
+                    //Create
+                    if (isset($_POST['task'])){
+                        $sql = $conn->prepare("INSERT into task VALUES (null, ?, 0)");
+                        $sql->execute(array($_POST['task']));
+                        echo "Inserido com sucesso";
+                    }
+                ?>
             </form>
+            
         </div>
         <div class="taskList">
             <h2>Lista de Task</h2>
@@ -39,11 +55,6 @@
                 <i class="ph-fill ph-trash" style="color: red;"></i>
             </div>
         </div>
-        <?php
-            include("Conexao.php");
-            $connection = new Conexao();
-            $connection->conectaDB();
-        ?>
     </main>
 </body>
 </html>
