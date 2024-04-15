@@ -15,6 +15,12 @@
         //Delete
         $sql = $conn->prepare("DELETE FROM task WHERE id = ?");
         $sql->execute(array($data["id"]));
+
+    } else if ($data['type'] == "update") {
+        //Update
+        $sql = $conn->prepare("UPDATE task SET title = ? WHERE id = ?");
+        $sql->execute(array($data["task"], $data["id"]));
+
     }
 
     //Redireciona para o index
