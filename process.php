@@ -8,7 +8,7 @@
 
     if ($data['type'] == "create") {
         //Create
-        $sql = $conn->prepare("INSERT into task VALUES (null, ?, 1)");
+        $sql = $conn->prepare("INSERT into task VALUES (null, ?, false)");
         $sql->execute(array($data["task"]));
 
     } else if ($data['type'] == "delete") {
@@ -21,6 +21,9 @@
         $sql = $conn->prepare("UPDATE task SET title = ? WHERE id = ?");
         $sql->execute(array($data["task"], $data["id"]));
 
+    } else if ($data["type"] == "switch") {
+        $sql = $conn->prepare("UPDATE task SET isDone = ? WHERE id = ?");
+        $sql->execute(array(!$data["isDone"], $data["id"]));
     }
 
     //Redireciona para o index
