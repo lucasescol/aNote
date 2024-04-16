@@ -22,10 +22,10 @@
         $sql->execute(array($data["task"], $data["id"]));
 
     } else if ($data["type"] == "switch") {
+        //Alterna o checkbox da tarefa
         $sql = $conn->prepare("UPDATE task SET isDone = ? WHERE id = ?");
         $sql->execute(array(!$data["isDone"], $data["id"]));
     }
 
     //Redireciona para o index
     header("Location: /anote/");
-?>
