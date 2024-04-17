@@ -9,7 +9,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="type" value="update">
                     <input type="hidden" name="id" value="<?= $task["id"] ?>">
-                    <input class="form-control" type="text" name="task" placeholder="Insira uma tarefa"
+                    <input class="form-control" type="text" name="task" value="<?= $task["title"] ?>" placeholder="Insira uma tarefa"
                         aria-label="default input example">
                 </div>
                 <div class="modal-footer">

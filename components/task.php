@@ -1,3 +1,10 @@
+<?php
+$sql = $conn->prepare("SELECT * FROM task");
+$sql->execute();
+
+$fetchTasks = $sql->fetchAll();
+?>
+
 <?php foreach ($fetchTasks as $i => $task): ?>
     <?php if ($task["isDone"] == false): ?>
         <div class='task'>
@@ -10,7 +17,7 @@
                     <input type="hidden" name="isDone" value="<?= $task["isDone"] ?>">
                 </form>
 
-                <p id='title'><?= $task['title'] ?></p>
+                <input type="text" disabled value="<?= $task['title'] ?>" id='text' />
             </div>
 
             <div class="actions">
@@ -38,7 +45,7 @@
                     <input type="hidden" name="isDone" value="<?= $task["isDone"] ?>">
                 </form>
 
-                <p id='titleDone'><?= $task['title'] ?></p>
+                <input type="text" disabled value="<?= $task['title'] ?>" id='textDone' />
             </div>
 
             <div class="actions">

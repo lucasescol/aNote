@@ -44,13 +44,6 @@
         <div class="taskList">
             <h3>Lista de Tarefas</h3>
 
-            <?php
-            $sql = $conn->prepare("SELECT * FROM task");
-            $sql->execute();
-
-            $fetchTasks = $sql->fetchAll();
-            ?>
-
             <?php include ("./components/task.php"); ?>
 
         </div>
